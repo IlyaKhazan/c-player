@@ -1,9 +1,12 @@
 import './styles/App.css';
+import { Player } from './components/Player/Player';
+import { Song } from './components/Song/Song';
 
 function App() {
   return (
-    <div>
-      12345
+    <div className='container'>
+      <Song />
+      <Player />
     </div>
   );
 }

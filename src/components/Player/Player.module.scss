@@ -1,0 +1,30 @@
+.player {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-bottom: 3rem;
+    align-items: center;
+}
+
+.timeControl {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    background-color: aquamarine;
+    padding: 2rem;
+}
+
+.playControl {
+    display: flex;
+    width: 30%;
+    justify-content: space-between;
+    svg {
+        cursor: pointer;
+    }
+
+}
+
+.rangeControl {
+    width: 70%;
+    cursor: pointer;
+}

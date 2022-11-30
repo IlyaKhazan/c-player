@@ -1,0 +1,15 @@
+.container {
+display: flex;
+flex-direction: column;
+background-color: antiquewhite;
+min-height: 50vh;
+gap: 2rem;
+padding: 3rem;
+align-items: center;
+justify-content: center;
+}
+
+.text {
+    font-size: 32px;
+    font-weight: 600;
+}
