@@ -3,7 +3,6 @@ import React, { useRef, useState } from "react";
 import styles from './Player.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPause, faPlay, faForward, faBackward } from '@fortawesome/free-solid-svg-icons'
-import { currentSong, isPlaying, setIsPlaying } from '../../App'
 
 
 export const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
@@ -23,10 +22,19 @@ export const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
 
     const timeUpdateHandler = (evt) => {
         setSongInfo({
+            ...songInfo,
             duration: evt.target.duration,
             currentTime: evt.target.currentTime,
         })
     }
+    const inputDragHandler = (evt) => {
+        audioRef.current.currentTime = evt.target.value;
+        setSongInfo({
+            ...songInfo,
+            currentTime: evt.target.value,
+        })
+    }
+
     const getTime = (time) => {
         return Math.floor(time / 60) + ':' + ("0" + Math.floor(time % 60)).slice(-2)
     }
@@ -36,7 +44,7 @@ export const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
         <div className={styles.player}>
             <div className={styles.timeControl}>
                 <p className="start-time">{getTime(songInfo.currentTime)} </p>
-                <input className={styles.rangeControl} type="range" name="" id="" />
+                <input className={styles.rangeControl} type="range" onChange={inputDragHandler} min='0' max={songInfo.duration} value={songInfo.currentTime} />
                 <p className="end-time">{getTime(songInfo.duration - songInfo.currentTime)}</p>
             </div>
             <div className={styles.playControl}>
